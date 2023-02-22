@@ -1,103 +1,156 @@
+<!-- Header of the webpage -->
 <header class="ps-f">
-  <img src="../../assets/logo.png" alt="">
-  <p> Best list of all countries with their flags on the whole internet!!!</p>
+  <img src="../../assets/logo.png" alt="" />
+  <p>Best list of all countries with their flags on the whole internet!!!</p>
 </header>
 
-
-<div class="body-content" >
+<!-- Searchbar  -->
+<div class="body-content">
   <div class="search-con">
     <div class="search-input">
-      <input type="text" name="SearchInput" id="searchInput" placeholder="Search" [(ngModel)]="searchString">
+      <input
+        type="text"
+        name="SearchInput"
+        id="searchInput"
+        placeholder="Search"
+        [(ngModel)]="searchString"
+      />
       <button (click)="onSearch()">Search</button>
     </div>
-
-
   </div>
-  
 
-  <div class *ngIf="searchString!='' && isSearchClicked ==true">
-    <div ><i class="ms-4">Search result</i>
-    <div class="search-results">
-      <div *ngFor="let country of searchResults">
-        <div class="card mx-2 mb-4 cursor-pointer" style="width: 9rem; height: 10rem;" (click)="showDetails(country.name.common)"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
-          <img [src]="country.flags.png" class="card-img-top p-2" [alt]="country.flags.alt" width="20" height="100" >
-          <div class="card-body">
-            <p class="card-text">
-              <span>{{country.name.official}}</span>
-            <p>{{country.continents}}</p>
+  <!-- Seach Results Display  -->
+  <div class *ngIf="searchString != '' && isSearchClicked == true">
+    <div>
+      <div class="search-results">
+        <div *ngFor="let country of searchResults">
+          <div
+            class="card mx-2 mb-4 cursor-pointer"
+            style="width: 9rem; height: 12rem"
+            (click)="showDetails(country.name.common)"
+            data-bs-target="#exampleModalToggle"
+            data-bs-toggle="modal"
+          >
+            <img
+              [src]="country.flags.png"
+              class="card-img-top p-2"
+              [alt]="country.flags.alt"
+              width="20"
+              height="100"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                <span>{{ country.name.official }}</span>
+              </p>
 
-
+              <p>{{ country.continents }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-    <div>
-    </div>
-    <hr>
-
+    <div></div>
+    <hr />
   </div>
-  <div ><i class="ms-4"></i>
-  <div class="container1" *ngIf="searchString=='' || isSearchClicked ==false" >
-    
-    <div class="card mx-2 mb-4 cursor-pointer" style="width: 9rem; height: 10rem;" *ngFor="let country of countriesDetails" (click)="showDetails(country.name.common)" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
-      <img [src]="country.flags.png" class="card-img-top p-2" [alt]="country.flags.alt" width="20" height="100" >
-      <div class="card-body">
-        <p class="card-text">
-          <span>{{country?.name.common}}</span>
-        <p class="ms-3">{{country.continents}}</p>
 
+  <div>
+    <div
+      class="container1"
+      *ngIf="searchString == '' || isSearchClicked == false"
+    >
+      <div
+        class="card mx-2 mb-4 cursor-pointer"
+        style="width: 9rem; height: 12rem"
+        *ngFor="let country of countriesDetails"
+        (click)="showDetails(country.name.common)"
+        data-bs-target="#exampleModalToggle"
+        data-bs-toggle="modal"
+      >
+        <img
+          [src]="country.flags.png"
+          class="card-img-top p-2"
+          [alt]="country.flags.alt"
+          width="20"
+          height="100"
+        />
+        <div class="card-body">
+          <p class="card-text">
+            <span>{{ country?.name.common }}</span>
+          </p>
 
+          <p class="ms-3">{{ country.continents }}</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-
 
 <button class="mb-2" (click)="showMore()">Show more</button>
 
 <!-- Modal-->
 
-<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 ms-4 mt-1" id="exampleModalToggleLabel">{{ country?.name?.common }}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5 ms-4 mt-1" id="exampleModalToggleLabel">
+          {{ country?.name?.common }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="country-details">
-          <img [src]="country?.flags?.png" width="150px" height="100px">
+          <img [src]="country?.flags?.png" width="150px" height="100px" />
           <table>
-            
             <tbody>
               <tr>
                 <td><b>Capital</b></td>
-                <td><p class="d-inline fw-bold ms-3" >{{country?.capital}}</p></td>
+                <td>
+                  <p class="d-inline fw-bold ms-3">{{ country?.capital }}</p>
+                </td>
               </tr>
               <tr>
                 <td><b>Continent</b></td>
-                <td><p class="d-inline fw-bold ms-3" >{{country?.continents}}</p></td>
+                <td>
+                  <p class="d-inline fw-bold ms-3">{{ country?.continents }}</p>
+                </td>
               </tr>
               <tr>
                 <td><b>Currency</b></td>
-                <td><p class="d-inline fw-bold ms-3" >{{currency}}</p></td>
+                <td>
+                  <p class="d-inline fw-bold ms-3">{{ currency }}</p>
+                </td>
               </tr>
               <tr>
                 <td><b>Languages</b></td>
-                <td><p class="d-inline fw-bold ms-3" >{{languages}}</p></td>
+                <td>
+                  <p class="d-inline fw-bold ms-3">{{ languages }}</p>
+                </td>
               </tr>
               <tr>
                 <td><b>Population</b></td>
-                <td><p class="d-inline fw-bold ms-3" >{{population}} </p></td>
+                <td>
+                  <p class="d-inline fw-bold ms-3">{{ population }}</p>
+                </td>
               </tr>
               <tr>
                 <td><b>Timezone</b></td>
-                <td><p class="d-inline fw-bold ms-3" >{{country?.timezones}}</p></td>
+                <td>
+                  <p class="d-inline fw-bold ms-3">{{ country?.timezones }}</p>
+                </td>
               </tr>
             </tbody>
-
           </table>
         </div>
       </div>
@@ -105,17 +158,20 @@
   </div>
 </div>
 
-
 <div class="loader" *ngIf="loader"><app-loader></app-loader></div>
-
 
 <footer>
   <div class="footer-con">
     <div class="footer-logo">
-      <img src="../../assets/logo.png" alt="">
+      <img src="../../assets/logo.png" alt="" />
     </div>
     <div class="footer-email">
-      <input type="text" name="userMail" id="userMail" placeholder="Enter Email">
+      <input
+        type="text"
+        name="userMail"
+        id="userMail"
+        placeholder="Enter Email"
+      />
       <button>Subscribe</button>
     </div>
   </div>
@@ -124,5 +180,4 @@
     <span>Worldpedia Inc</span>
     <span> 2023 | All Rights Reserved </span>
   </div>
-
 </footer>
