@@ -106,6 +106,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "worldpedia:build:production",
+            "firebaseProject": "worldpedia-syed",
+            "firebaseHostingSite": "worldpedia-syed"
+          }
         }
       }
     }

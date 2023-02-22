@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "worldpedia-syed"
+  },
+  "targets": {
+    "worldpedia-syed": {
+      "hosting": {
+        "worldpedia": [
+          "worldpedia-syed"
+        ]
+      }
+    }
+  }
+}
