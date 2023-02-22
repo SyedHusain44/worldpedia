@@ -212,7 +212,7 @@ button {
     transform: translate(-50%, -50%);
     .btn-close{
         position: absolute;
-        left: 95%;
+        left: 90%;
     }
     img{
         border: 1px solid black;
@@ -325,5 +325,29 @@ button {
         .card{
             width: 70% !important;
         }
+    }
+    .search-results {
+        
+        display: flex;
+        justify-content: center;
+        padding-left: 30px !important;
+        margin-top: 250px !important;
+        width: 100% !important;
+        .card{
+            width: 90% !important;
+        }
+    
+    }
+
+    .modal-dialog{
+     width: 375px;
+    
+     position: absolute;
+     left: 0;
+     .btn-close{
+        position: absolute;
+        left: 85%;
+    }
+     
     }
 }
